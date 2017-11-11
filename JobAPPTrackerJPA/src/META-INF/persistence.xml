@@ -12,6 +12,7 @@
     <class>entities.Application</class>
     <class>entities.Response</class>
     <class>entities.Interview</class>
+    <class>entities.User</class>
 
 
     <properties>
