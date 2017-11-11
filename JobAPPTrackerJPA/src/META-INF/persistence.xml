@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+  xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+  <persistence-unit name="JobAppTracker">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider
+    </provider>
+
+    <!-- List Entities Here -->
+    <class>entities.Application</class>
+    <class>entities.Response</class>
+    <class>entities.Interview</class>
+
+
+    <properties>
+  <!-- Make sure to set proper values for these when copying to a new project -->
+      <property name="javax.persistence.jdbc.url"
+        value="jdbc:mysql://localhost:3306/jobtrackerdb" />
+      <property name="javax.persistence.jdbc.user"
+        value="jobtracker"/>
+      <property name="javax.persistence.jdbc.password"
+        value="jobtracker" />
+      <property name="javax.persistence.jdbc.driver"
+        value="com.mysql.jdbc.Driver" />
+  
+  <!-- Flip these to true for debugging/viewing sql queries -->
+      <property name="hibernate.show_sql" value="false" />
+      <property name="hibernate.format_sql" value="false" />
+  
+  <!-- Optimize queries for MySQL -->
+      <property name="hibernate.dialect"
+        value="org.hibernate.dialect.MySQLDialect" />
+        
+  <!-- Use c3p0 to prevent connection timeout bug -->
+      <property name="hibernate.connection.provider_class"
+          value="org.hibernate.connection.C3P0ConnectionProvider" />
+  
+  <!-- c3p0 boilerplate settings -->
+      <property name="hibernate.c3p0.max_size" value="5" />
+      <property name="hibernate.c3p0.min_size" value="0" />
+      <property name="hibernate.c3p0.acquire_increment" value="1" />
+      <property name="hibernate.c3p0.idle_test_period" value="300"/>
+      <property name="hibernate.c3p0.max_statements" value="0" />
+      <property name="hibernate.c3p0.timeout" value="60" />
+      
+      <property name="hibernate.connection.zeroDateTimeBehavior" value="convertToNull" />
+    </properties>
+  </persistence-unit>
+</persistence>

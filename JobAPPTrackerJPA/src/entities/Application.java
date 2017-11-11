@@ -1,0 +1,125 @@
+package entities;
+
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+public class Application {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date date;
+
+	private String companyName;
+	private String jobLocation;
+	private String appliedVia;
+	private String resume;
+	private String coverLetter;
+	private String notes;
+	
+	@OneToMany(mappedBy="application")
+	private Set<Response> responses;
+	
+	@OneToMany(mappedBy="response")
+	private Set<Interview> interviews;
+
+	/***************** Gets and Sets *************************************/
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getJobLocation() {
+		return jobLocation;
+	}
+
+	public void setJobLocation(String jobLocation) {
+		this.jobLocation = jobLocation;
+	}
+
+	public String getAppliedVia() {
+		return appliedVia;
+	}
+
+	public void setAppliedVia(String appliedVia) {
+		this.appliedVia = appliedVia;
+	}
+
+	public String getResume() {
+		return resume;
+	}
+
+	public void setResume(String resume) {
+		this.resume = resume;
+	}
+
+	public String getCoverLetter() {
+		return coverLetter;
+	}
+
+	public void setCoverLetter(String coverLetter) {
+		this.coverLetter = coverLetter;
+	}
+
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Set<Response> getResponses() {
+		return responses;
+	}
+
+	public void setResponses(Set<Response> responses) {
+		this.responses = responses;
+	}
+
+	public Set<Interview> getInterviews() {
+		return interviews;
+	}
+
+	public void setInterviews(Set<Interview> interviews) {
+		this.interviews = interviews;
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Application [id=").append(id).append(", date=").append(date).append(", companyName=")
+				.append(companyName).append(", jobLocation=").append(jobLocation).append(", appliedVia=")
+				.append(appliedVia).append(", resume=").append(resume).append(", coverLetter=").append(coverLetter)
+				.append(", notes=").append(notes).append("]");
+		return builder.toString();
+	}
+
+}
