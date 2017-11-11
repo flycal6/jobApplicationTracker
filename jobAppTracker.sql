@@ -10,6 +10,14 @@ USE jobtrackerdb;
 -- GRANT ALL PRIVILEGES ON jobtrackerdb.* TO 'jobtracker'@'localhost';
 
 --  Build tables
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
 DROP TABLE IF EXISTS `application`;
 CREATE TABLE `application` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
