@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,25 +11,24 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Response;
+import entities.User;
 
-public class ResponseTest {
+public class UserTest {
 
 	private EntityManagerFactory emf = null;
 	private EntityManager em = null;
-	private Response r = null;
-	
+	private User u = null;
 
 	@Before
 	public void setup() {
 		emf = Persistence.createEntityManagerFactory("JobAppTracker");
 		em = emf.createEntityManager();
-		r = em.find(Response.class, 1);
+		u = em.find(User.class, 1);
 	}
 
 	@After
 	public void teardown() {
-		r = null;
+		u = null;
 		em.close();
 		emf.close();
 	}
@@ -37,16 +37,14 @@ public class ResponseTest {
 	public void test() {
 		boolean bool = true;
 		assertEquals(true, bool);
+		assertFalse(bool != true);
 	}
-	
+
 	@Test
-	public void responseExistsAndHasValuesTest() {
-		assertEquals(1, r.getId());
-		assertEquals(1, r.getApplication().getId());
-		assertEquals(false, r.getInterviewRequested());
-		assertEquals("2017-11-11 15:55:45.0", String.valueOf(r.getDate()));
-		assertEquals("Bob Bobbers", r.getName());
-		assertEquals("a polite decline", r.getNotes());
+	public void userExistsAndHasValuesTest() {
+		assertEquals(1, u.getId());
+		assertEquals("bob", u.getPassword());
+		assertEquals("bob@bob.com", u.getEmail());
 	}
 
 }
