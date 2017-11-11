@@ -18,6 +18,8 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 );
 
+INSERT INTO `user` (email, password) VALUES ('bob@bob.com', 'bob');
+
 DROP TABLE IF EXISTS `application`;
 CREATE TABLE `application` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
