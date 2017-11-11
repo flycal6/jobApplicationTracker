@@ -21,6 +21,7 @@ public class DataSecurityInterceptor implements HandlerInterceptor {
 
 			// compare id in url to id from User obj
 			int id = Integer.parseInt(request.getRequestURI().split("/")[4]);
+			System.out.println(request.getRequestURI());
 
 			if (id == user.getId()) {
 				return true;
