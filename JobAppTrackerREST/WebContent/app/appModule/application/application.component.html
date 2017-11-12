@@ -48,14 +48,15 @@
 	        <div class="row">
 	            <div class="col-sm-3 lead" ng-click="vm.setSelected(app)">{{app.date | date:'EEE MMM d, y' : 'UTC'}}</div>
 	            <div class="col-sm-6 lead" ng-click="vm.setSelected(app)">{{app.companyName}}, {{app.jobLocation}}</div>
-	            <div class="col-sm-1 btn btn-danger" ng-click="vm.deleteSelected(app)">X</div>
+	            <div class="col-sm-1 btn btn-outline-danger" ng-click="vm.deleteSelected(app)">X</div>
 	
 	            <div ng-repeat="res in app.responses">
 	                <div class="col-sm-3">Interview Request: {{res.interviewRequested}}
 	                </div>
 	            </div>
 	        </div>
-        <hr ng-if="!$last">
+        <hr>
+<!--         <hr ng-if="!$last"> -->
         </div>
     </div>
 
