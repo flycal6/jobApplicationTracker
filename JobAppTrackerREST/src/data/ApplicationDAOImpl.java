@@ -97,7 +97,24 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 
 	@Override
 	public Boolean destroy(int uid, int aid) {
-		// TODO Auto-generated method stub
+		try {
+			String q = "SELECT a FROM Application a WHERE id = :aid AND a.user.id = :uid";
+			Application a = em.createQuery(q, Application.class)
+					.setParameter("aid", aid)
+					.setParameter("uid", uid)
+					.getResultList()
+					.get(0);
+			
+			em.remove(a);
+			
+			if(em.find(Application.class, aid) != null) {
+				return false;
+			}
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return null;
 	}
 

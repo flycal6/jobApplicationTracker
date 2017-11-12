@@ -55,9 +55,10 @@ public class ApplicationController implements ApplicationControllerI {
 	}
 
 	@Override
-	public Boolean destroy(HttpServletRequest req, HttpServletResponse res, int uid, int aid) {
-		// TODO Auto-generated method stub
-		return null;
+	@RequestMapping(path="user/{uid}/app/{aid}", method=RequestMethod.DELETE)
+	public Boolean destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int aid) {
+		res.setStatus(202);
+		return appDao.destroy(uid, aid);
 	}
 	
 }
