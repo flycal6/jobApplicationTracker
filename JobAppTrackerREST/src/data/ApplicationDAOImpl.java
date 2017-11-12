@@ -1,6 +1,5 @@
 package data;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,7 +11,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import entities.Application;
 import entities.User;
@@ -82,8 +80,6 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 			a.setJobLocation(omA.getJobLocation());
 			a.setNotes(omA.getNotes());
 			a.setResume(omA.getResume());
-			a.setInterviews(omA.getInterviews());
-			a.setResponses(omA.getResponses());
 			
 			if(a != null) {
 				return a;

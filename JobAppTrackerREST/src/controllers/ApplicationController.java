@@ -50,7 +50,7 @@ public class ApplicationController implements ApplicationControllerI {
 	@Override
 	@RequestMapping(path="user/{uid}/app/{aid}", method=RequestMethod.PUT)
 	public Application update(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int aid, @RequestBody String appJson) {
-		res.setStatus(204);
+		res.setStatus(202);
 		return appDao.update(uid, aid, appJson);
 	}
 
