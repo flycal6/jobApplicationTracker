@@ -13,3 +13,10 @@
 hr {
 	margin-bottom: 0;
 }
+
+#brandLogo {
+	padding: 0;
+}
+#brandLogo img {
+	max-height: 2em;
+}
