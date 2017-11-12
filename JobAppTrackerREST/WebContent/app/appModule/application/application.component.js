@@ -8,6 +8,7 @@ angular.module('appModule')
 			vm.createApplication = null;
 			vm.applications = [];
 			
+/******************************* refresh page ***************************************/
 			var reload = function(){
 				vm.loading = 1;
 				vm.applicationSelected = null;
@@ -20,6 +21,7 @@ angular.module('appModule')
 			
 			reload();
 			
+/******************************* show create form ***************************************/
 			$scope.$on('create', function(){
 				vm.setCreateApplication();
 			});
@@ -28,6 +30,20 @@ angular.module('appModule')
 				vm.createApplication = true;
 			};
 			
+/******************************* show create form ***************************************/
+			vm.newApp = {};
+			vm.newAppSubmit = function(newApp){
+				vm.loading = 1;
+				console.log(newApp);
+				appService.create(newApp).then(function(res){
+					console.log(res)
+					vm.createApplication = null;
+					reload();
+				})
+			}
+			
+			
+/******************************* show detail view ***************************************/
 			vm.setSelected = function(app){
 				console.log(app)
 				vm.applicationSelected = app;
