@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app='appModule'>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- css -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- <link rel="icon" type="image/png" href="./img/oilers-icon.png"> -->
+
+
+    <!-- Angular/3rd Party -->
+    <script src="./js/angularjs/angular.min.js"></script>
+    <!-- ngRoute -->
+    <script src="./js/angularjs/angular-route.min.js"></script>
+    <!-- cookies for login/registration -->
+    <script src="./js/angularjs/angular-cookies.min.js"></script>
+    <!-- Charts JS -->
+    <script src="./js/angularjs/Charts.min.js"></script>
+    <script src="./js/angularjs/angular-chart.min.js"></script>
+    <!-- bootstrap dependencies -->
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/popper.min.js"></script>
+    <!-- Modules -->
+    <script src="./app/appModule/app.module.js"></script>
+    <script src="./app/authModule/auth.module.js"></script>
+    <!-- <script src="./app/chartModule/chart.module.js"></script> -->
+    <!-- Service -->
+    <script src="./app/authModule/auth.service.js"></script>
+    <!-- Components -->
+    <script src="./app/appModule/navigation/navigation.component.js"></script>
+    <script src="./app/appModule/notFound/notFound.component.js"></script>
+    <script src="./app/authModule/login/login.component.js"></script>
+    <script src="./app/authModule/logout/logout.component.js"></script>
+    <script src="./app/authModule/register/register.component.js"></script>
+    <title>Job Applications</title>
+</head>
+
+<body>
+    <navigation></navigation>
+    <ng-view></ng-view>
+
+
+    <script src="./js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
