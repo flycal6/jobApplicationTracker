@@ -6,6 +6,7 @@ angular.module('appModule')
 			vm.loading = 1;
 			vm.applicationSelected = null;
 			vm.createApplication = null;
+			vm.upateApplication = null;
 			vm.applications = [];
 			
 /******************************* refresh page ***************************************/
@@ -29,8 +30,7 @@ angular.module('appModule')
 			vm.setCreateApplication = function(){
 				vm.createApplication = true;
 			};
-			
-/******************************* show create form ***************************************/
+/******************************* create new application ***************************************/
 			vm.newApp = {};
 			vm.newAppSubmit = function(newApp){
 				vm.loading = 1;
@@ -41,6 +41,26 @@ angular.module('appModule')
 					reload();
 				})
 			}
+			
+/******************************* show update form ***************************************/
+			vm.setUpateApplication = function(app){
+				vm.upateApplication = true;
+				vm.updateApp = app;
+				console.log(vm.updateApp)
+			};
+			
+/******************************* show update form ***************************************/
+			
+			vm.updateAppSubmit = function(app){
+				vm.loading = 1;
+				console.log(app);
+				appService.update(app).then(function(res){
+					console.log(res);
+					vm.updateApplication = false;
+					vm.loading = 0;
+				})
+			};
+			
 			
 			
 /******************************* show detail view ***************************************/

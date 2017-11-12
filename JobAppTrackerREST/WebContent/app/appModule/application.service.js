@@ -27,8 +27,20 @@ angular.module('appModule')
 					'Content-Type': 'application/json'
 				},
 				data: app
-			})
-		}
+			});
+		};
+		
+		service.update = function(app){
+			var uid = authService.getToken().id;
+			return $http({
+				method: 'PUT',
+				url: 'rest/user/' + uid + '/app/' + app.id,
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				data: app
+			});
+		};
 		
 		return service;
 	})
