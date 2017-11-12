@@ -14,8 +14,6 @@ angular.module('authModule').component('login', {
 			.catch(function(err){
 				vm.loading = 0;
 				vm.unauthorized = 1;
-//				window.alert('Bad Login 401');
-//				$(".alert").alert('Bad Login 401')
 			});
 		}
 	},
