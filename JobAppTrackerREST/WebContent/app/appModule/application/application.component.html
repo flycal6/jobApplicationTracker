@@ -1,1 +1,40 @@
-<h1>application component</h1>
+<div class="container">
+	<h1 class="display-4">Submitted Applications</h1>
+
+	<div class="row" ng-repeat="app in vm.applications">
+		<div class="col-sm-4">Date Applied: {{app.date}}</div>
+		<div class="col-sm-4">Company: {{app.companyName}}</div>
+		<div class="col-sm-4">Location: {{app.jobLocation}}</div>
+	</div>
+
+	<div class="row" ng-repeat="app in vm.applications">
+		<div class="col-sm-4">Applied Via: {{app.appliedVia}}</div>
+		<div class="col-sm-4">Resume Sent: {{app.resume}}</div>
+		<div class="col-sm-4">Cover Letter Sent: {{app.coverLetter}}</div>
+	</div>
+
+	<div class="row" ng-repeat="app in vm.applications">
+		<div ng-repeat="res in app.responses">
+			<div class="col-sm-4">Date: {{res.date}}</div>
+			<div class="col-sm-4">Name: {{res.name}}</div>
+			<div class="col-sm-4">Email: {{res.email}}</div>
+		</div>
+	</div>
+	
+	<div class="row" ng-repeat="app in vm.applications">
+		<div ng-repeat="res in app.responses">
+			<div class="col-sm-4">Phone: {{res.phone}}</div>
+			<div class="col-sm-4">Interview Request: {{res.interviewRequested}}</div>
+			<div class="col-sm-4">Notes: {{res.notes}}</div>
+		</div>
+	</div>
+
+	<div class="row" ng-repeat="app in vm.applications">
+		<div ng-repeat="int in app.interviews">
+			<div class="col-sm-4">Date: {{int.date}}</div>
+			<div class="col-sm-4">Name: {{int.name}}</div>
+			<div class="col-sm-4">Email: {{int.email}}</div>
+		</div>
+	</div>
+	<hr>
+</div>
