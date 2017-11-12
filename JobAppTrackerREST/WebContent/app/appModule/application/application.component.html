@@ -44,11 +44,11 @@
     <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected" ng-show="!vm.createApplication">
         <h1 class="display-4">Submitted Applications</h1>
         <hr>
-        <div class="row-hover" ng-repeat="app in vm.applications" ng-click="vm.setSelected(app)">
+        <div class="row-hover" ng-repeat="app in vm.applications">
 	        <div class="row">
-	            <div class="col-sm-3 lead">{{app.date | date:'EEE MMM d, y' : 'UTC'}}</div>
-	            <div class="col-sm-6 lead">{{app.companyName}}, {{app.jobLocation}}</div>
-	            <!-- <div class="col-sm-3">Location: </div> -->
+	            <div class="col-sm-3 lead" ng-click="vm.setSelected(app)">{{app.date | date:'EEE MMM d, y' : 'UTC'}}</div>
+	            <div class="col-sm-6 lead" ng-click="vm.setSelected(app)">{{app.companyName}}, {{app.jobLocation}}</div>
+	            <div class="col-sm-1 btn btn-danger" ng-click="vm.deleteSelected(app)">X</div>
 	
 	            <div ng-repeat="res in app.responses">
 	                <div class="col-sm-3">Interview Request: {{res.interviewRequested}}

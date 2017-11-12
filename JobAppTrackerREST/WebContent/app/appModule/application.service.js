@@ -42,5 +42,13 @@ angular.module('appModule')
 			});
 		};
 		
+		service.destroy = function(app){
+			var uid = authService.getToken().id;
+			return $http({
+				method: 'DELETE',
+				url: 'rest/user/' + uid + '/app/' + app.id,
+			});
+		};
+		
 		return service;
 	})

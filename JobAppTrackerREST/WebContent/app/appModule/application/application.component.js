@@ -51,7 +51,6 @@ angular.module('appModule')
 			};
 			
 /******************************* show update form ***************************************/
-			
 			vm.updateAppSubmit = function(app){
 				vm.loading = 1;
 				console.log(app);
@@ -62,7 +61,15 @@ angular.module('appModule')
 				})
 			};
 			
-			
+/******************************* Delete Application ***************************************/
+			vm.deleteSelected = function(app){
+				vm.loading = 1;
+				console.log(app);
+				appService.destroy(app).then(function(res){
+					console.log(res);
+					reload();
+				});
+			};
 			
 /******************************* show detail view ***************************************/
 			vm.setSelected = function(app){
