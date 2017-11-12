@@ -23,7 +23,7 @@ INSERT INTO `user` (email, password) VALUES ('bob@bob.com', 'bob');
 DROP TABLE IF EXISTS `application`;
 CREATE TABLE `application` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date` DATETIME DEFAULT CURRENT_TIMESTAMP,
+  `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `companyName` varchar(255) NOT NULL,
   `jobLocation` varchar(255) NOT NULL,
   `appliedVia` varchar(255) NOT NULL,
