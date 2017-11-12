@@ -7,7 +7,7 @@ angular.module('authModule').component('logout', {
 		
 		vm.logout = function(){
 			authService.logout().then(function(res){
-				$location.path('/');
+				$location.path('/login');
 				$rootScope.$broadcast('Logged Out Message')
 			})
 		}
