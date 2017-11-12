@@ -44,7 +44,7 @@ public class ApplicationTest {
 		assertEquals(1, a.getId());
 		assertEquals("Company A", a.getCompanyName());
 		assertEquals("Java1CoverLetter.pdf", a.getCoverLetter());
-		assertEquals("2017-11-11 15:55:45.0", String.valueOf(a.getDate()));
+		assertEquals("2017-11-11 17:24:16.0", String.valueOf(a.getDate()));
 		assertEquals("LinkedIn, http://www.job.com", a.getAppliedVia());
 		assertEquals("notes one", a.getNotes());
 		assertEquals(1, a.getResponses().size());

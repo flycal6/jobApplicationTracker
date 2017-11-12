@@ -44,7 +44,7 @@ public class ResponseTest {
 		assertEquals(1, r.getId());
 		assertEquals(1, r.getApplication().getId());
 		assertEquals(false, r.getInterviewRequested());
-		assertEquals("2017-11-11 15:55:45.0", String.valueOf(r.getDate()));
+		assertEquals("2017-11-11 17:24:16.0", String.valueOf(r.getDate()));
 		assertEquals("Bob Bobbers", r.getName());
 		assertEquals("a polite decline", r.getNotes());
 	}
