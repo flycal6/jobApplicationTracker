@@ -41,7 +41,7 @@
     </div>
 
     <!-- ******************* index view of applications *************************  -->
-    <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected" ng-show="!vm.createApplication">
+    <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected || vm.createApplication" ng-show="!vm.createApplication">
         <h1 class="display-4">Submitted Applications</h1>
         <hr>
         <div class="row-hover" ng-repeat="app in vm.applications">
@@ -49,9 +49,9 @@
 	            <div class="col-sm-3 lead" ng-click="vm.setSelected(app)">{{app.date | date:'EEE MMM d, y' : 'UTC'}}</div>
 	            <div class="col-sm-6 lead" ng-click="vm.setSelected(app)">{{app.companyName}}, {{app.jobLocation}}</div>
 	            <div class="col-sm-1 btn btn-outline-danger" ng-click="vm.deleteSelected(app)">X</div>
-	
-	            <div ng-repeat="res in app.responses">
-	                <div class="col-sm-3">Interview Request: {{res.interviewRequested}}
+	            <div class="w-100 d-none d-md-block" ng-click="vm.setSelected(app)" ng-repeat="res in app.responses">
+	                <div class="col-6">
+	                		Interview Request: {{res.interviewRequested}}
 	                </div>
 	            </div>
 	        </div>
@@ -61,9 +61,11 @@
     </div>
 
     <!-- ******************* detail view of application with responses and interviews *************************  -->
-    <div ng-show="vm.loading == 0 && vm.applicationSelected">
-        <h1 class="display-4">{{vm.applicationSelected.companyName}} Application</h1>
-        <button class="btn btn-outline-primary" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
+    <div ng-show="vm.loading == 0 && vm.applicationSelected && !vm.upateApplication">
+        <h1 class="display-4">{{vm.applicationSelected.companyName}}
+        <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
+        </h1>
+        <hr>
         <div class="row">
             <div class="col-sm-4">Date Applied: {{vm.applicationSelected.date | date:'EEE MMM d, y h:mm a' : 'UTC'}}</div>
             <div class="col-sm-4">Company: {{vm.applicationSelected.companyName}}</div>
@@ -76,22 +78,19 @@
             <div class="col-sm-4">Cover Letter Sent: {{vm.applicationSelected.coverLetter}}</div>
         </div>
 
-        <div class="row">
-            <div ng-repeat="res in vm.applicationSelected.responses">
-                <div class="col-sm-4">Date: {{res.date}}</div>
-                <div class="col-sm-4">Name: {{res.name}}</div>
-                <div class="col-sm-4">Email: {{res.email}}</div>
+        <div ng-repeat="res in vm.applicationSelected.responses">
+        		<h2>Responses from {{res.name}}</h2>
+        		<div class="row">
+	            <div class="col-sm-4">Date: {{res.date}}</div>
+	            <div class="col-sm-4">Name: {{res.name}}</div>
+	            <div class="col-sm-4">Email: {{res.email}}</div>
+	            <div class="col-sm-4">Phone: {{res.phone}}</div>
+	            <div class="col-sm-4">Interview Request: {{res.interviewRequested}}</div>
+	            <div class="col-sm-8">Notes: {{res.notes}}</div>
             </div>
+            <hr>
         </div>
 
-        <div class="row">
-            <div ng-repeat="res in vm.applicationSelected.responses">
-                <div class="col-sm-4">Phone: {{res.phone}}</div>
-                <div class="col-sm-4">Interview Request: {{res.interviewRequested}}
-                </div>
-                <div class="col-sm-4">Notes: {{res.notes}}</div>
-            </div>
-        </div>
 
         <div class="row">
             <div ng-repeat="int in vm.applicationSelected.interviews">
@@ -104,7 +103,7 @@
     </div>
     
     <!-- ******************* update application *************************  -->
-    <div ng-show="vm.loading == 0 && vm.upateApplication">
+    <div ng-show="vm.loading == 0 && vm.upateApplication && !vm.createApplication">
         <h1 class="display-4">Update Application</h1>
         <form>
             <div class="form-row">

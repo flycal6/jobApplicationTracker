@@ -31,6 +31,7 @@ angular.module('appModule')
 			});
 			
 			vm.setCreateApplication = function(){
+				vm.applicationSelected = null;
 				vm.createApplication = true;
 			};
 /******************************* create new application ***************************************/
