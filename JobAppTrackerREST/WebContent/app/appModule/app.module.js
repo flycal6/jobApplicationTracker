@@ -2,7 +2,7 @@ angular.module('appModule', [ 'ngRoute', 'authModule' ]).config(
 		function($routeProvider) {
 			$routeProvider
 			.when('/', {
-				template : '<home></home>'
+				template : '<application></application>'
 			})
 			.when('/navigation', {
 				template : '<navigation></navigation>'
