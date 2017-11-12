@@ -61,7 +61,33 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 
 	@Override
 	public Application update(int uid, int aid, String appJson) {
-		// TODO Auto-generated method stub
+		String q = "SELECT a FROM Application a WHERE id = :aid AND a.user.id = :uid";
+		Application a = em.createQuery(q, Application.class)
+							.setParameter("aid", aid)
+							.setParameter("uid", uid)
+							.getResultList()
+							.get(0);
+							
+		ObjectMapper om = new ObjectMapper();
+		try {
+			Application omA = om.readValue(appJson, Application.class);
+			a.setAppliedVia(omA.getAppliedVia());
+			a.setCompanyName(omA.getCompanyName());
+			a.setCoverLetter(omA.getCoverLetter());
+			a.setDate(omA.getDate());
+			a.setJobLocation(omA.getJobLocation());
+			a.setNotes(omA.getNotes());
+			a.setResume(omA.getResume());
+			a.setInterviews(omA.getInterviews());
+			a.setResponses(omA.getResponses());
+			
+			if(a != null) {
+				return a;
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
