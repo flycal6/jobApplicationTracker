@@ -44,8 +44,9 @@ angular.module('appModule')
 			
 /******************************* show update form ***************************************/
 			vm.setUpateApplication = function(app){
-				vm.upateApplication = true;
 				vm.updateApp = app;
+				vm.updateApp.date = new Date(app.date);
+				vm.upateApplication = true;
 				console.log(vm.updateApp)
 			};
 			

@@ -1,5 +1,6 @@
 package data;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
 import entities.Application;
 import entities.User;
@@ -47,12 +49,14 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 	@Override
 	public Application create(int uid, String appJson) {
 		ObjectMapper om = new ObjectMapper();
+		Application a;
 		try {
-			Application a = om.readValue(appJson, Application.class);
+			a = om.readValue(appJson, Application.class);
 			a.setUser(em.find(User.class, uid));
 			em.persist(a);
 			em.flush();
 			return a;
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
