@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 public class Application {
@@ -27,12 +31,17 @@ public class Application {
 	private String resume;
 	private String coverLetter;
 	private String notes;
-	
-	@OneToMany(mappedBy="application")
+
+	@OneToMany(mappedBy = "application")
 	private Set<Response> responses;
-	
-	@OneToMany(mappedBy="response")
+
+	@OneToMany(mappedBy = "response")
 	private Set<Interview> interviews;
+
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	private User user;
 
 	/***************** Gets and Sets *************************************/
 
@@ -110,6 +119,14 @@ public class Application {
 
 	public void setInterviews(Set<Interview> interviews) {
 		this.interviews = interviews;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override

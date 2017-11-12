@@ -30,13 +30,16 @@ CREATE TABLE `application` (
   `resume` varchar(255) NOT NULL,
   `coverLetter` varchar(255) NOT NULL,
   `notes` varchar(255),
-  PRIMARY KEY (`id`)
+  `userId` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`userId`)
+    REFERENCES `user` (`id`)
 );
 
-INSERT INTO `application` (companyName, jobLocation, appliedVia, resume, coverLetter, notes)
-    VALUES ('Company A', 'Denver', 'LinkedIn, http://www.job.com', 'bthomas2017.pdf', 'Java1CoverLetter.pdf', 'notes one');
-INSERT INTO `application` (companyName, jobLocation, appliedVia, resume, coverLetter, notes)
-    VALUES ('Company B', 'Davis, CA', 'boss@companyb.com', 'bthomas2017.pdf', 'ag1CoverLetter.pdf', 'notes two');
+INSERT INTO `application` (companyName, jobLocation, appliedVia, resume, coverLetter, notes, userId)
+    VALUES ('Company A', 'Denver', 'LinkedIn, http://www.job.com', 'bthomas2017.pdf', 'Java1CoverLetter.pdf', 'notes one', 1);
+INSERT INTO `application` (companyName, jobLocation, appliedVia, resume, coverLetter, notes, userId)
+    VALUES ('Company B', 'Davis, CA', 'boss@companyb.com', 'bthomas2017.pdf', 'ag1CoverLetter.pdf', 'notes two', 1);
 
 DROP TABLE IF EXISTS `response`;
 CREATE TABLE `response` (
