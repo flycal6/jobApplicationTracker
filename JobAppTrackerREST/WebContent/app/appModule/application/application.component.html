@@ -45,7 +45,7 @@
         <h1 class="display-4">Submitted Applications</h1>
         <div ng-repeat="app in vm.applications" ng-click="vm.setSelected(app)">
 	        <div class="row">
-	            <div class="col-sm-3">Date Applied: {{app.date}}</div>
+	            <div class="col-sm-3">Date Applied: {{app.date | date:'EEE MMM d, y h:mm a' : 'UTC'}}</div>
 	            <div class="col-sm-3">Company: {{app.companyName}}</div>
 	            <div class="col-sm-3">Location: {{app.jobLocation}}</div>
 	
