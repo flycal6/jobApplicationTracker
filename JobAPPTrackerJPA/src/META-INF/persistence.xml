@@ -17,6 +17,7 @@
 
     <properties>
   <!-- Make sure to set proper values for these when copying to a new project -->
+  <!-- '?serverTimezone=UTC' is appended after db name to correct for MySQL offsetting time -->
       <property name="javax.persistence.jdbc.url"
         value="jdbc:mysql://localhost:3306/jobtrackerdb" />
       <property name="javax.persistence.jdbc.user"
