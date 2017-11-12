@@ -21,8 +21,10 @@ public class ApplicationDAOImpl implements ApplicationDAO {
 
 	@Override
 	public Set<Application> index(int uid) {
-		String q = "SELECT a FROM Application a";
-		List<Application> apps = em.createQuery(q, Application.class).getResultList();
+		String q = "SELECT a FROM Application a WHERE id=:uid";
+		List<Application> apps = em.createQuery(q, Application.class)
+									.setParameter("uid", uid)
+									.getResultList();
 		return new HashSet<>(apps);
 	}
 
