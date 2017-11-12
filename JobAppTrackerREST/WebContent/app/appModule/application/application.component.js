@@ -1,7 +1,7 @@
 angular.module('appModule')
 	.component('application', {
 		templateUrl: 'app/appModule/application/application.component.html',
-		controller: function(appService, $scope){
+		controller: function(appService, $scope, $location){
 			var vm = this;
 			vm.loading = 1;
 			vm.applicationSelected = null;
@@ -18,6 +18,9 @@ angular.module('appModule')
 					console.log(vm.applications)
 					vm.loading = 0;
 				})
+				.catch(function(err) {
+					$location.path('/login');
+				});
 			};
 			
 			reload();
@@ -67,6 +70,7 @@ angular.module('appModule')
 				console.log(app);
 				appService.destroy(app).then(function(res){
 					console.log(res);
+					vm.loading = 0;
 					reload();
 				});
 			};
