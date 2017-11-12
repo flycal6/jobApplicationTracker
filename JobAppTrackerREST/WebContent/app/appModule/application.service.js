@@ -51,4 +51,4 @@ angular.module('appModule')
 		};
 		
 		return service;
-	})
+	});
