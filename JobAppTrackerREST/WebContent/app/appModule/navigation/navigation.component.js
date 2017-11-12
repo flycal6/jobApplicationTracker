@@ -24,7 +24,29 @@ angular.module('appModule').component('navigation', {
 /************ broadcast to create new application ****************************************************/
 		vm.createApp = function(){
 			$rootScope.$broadcast('create');
-		}
+		};
+		
+/************ view applications page ****************************************************/
+		vm.viewApps = function(){
+			$location.path('/');
+			$rootScope.$broadcast('viewApps');
+		};
+		
+/************ broadcast to view all responses ****************************************************/
+		vm.viewAllResponses = function(){
+			$location.path('/responses');
+		};
+
+/************ add New App button check ****************************************************/
+		vm.rootPath = function(){
+			var path = $location.path();
+			if(path == '/'){
+				return true;
+			}
+			else{
+				return false;
+			}
+		};
 		
 	},
 	controllerAs: 'vm'

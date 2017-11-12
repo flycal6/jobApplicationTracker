@@ -12,6 +12,7 @@
             <li><a href="http://github.com/flycal6" class="text-white">Github</a></li>
             <li><a href="https://www.linkedin.com/in/brian-ray-thomas/" class="text-white">LinkedIn</a></li>
             <li><a href="mailto:brianraythomas@gmail.com" class="text-white">Email me</a></li>
+		    <li><logout ng-show="vm.checkLogIn()"></logout></li>
           </ul>
         </div>
         </div>
@@ -23,8 +24,9 @@
       <a id="brandLogo" class="navbar-brand" href="#/"><img src="img/job-brand.png" class="img-fluid"></a>
       <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.login()" ng-hide="vm.checkLogIn()">Login</button>
       <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.register()" ng-hide="vm.checkLogIn()">Register</button>
-      <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.createApp()" ng-show="vm.checkLogIn()">New App</button>
-      <logout ng-show="vm.checkLogIn()"></logout>
+      <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.createApp()" ng-show="vm.checkLogIn(); vm.rootPath();">New App</button>
+      <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.viewApps()" ng-show="vm.checkLogIn()">Applications</button>
+      <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.viewAllResponses()" ng-show="vm.checkLogIn()">Responses</button>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon btn-sm"></span>
       </button>
