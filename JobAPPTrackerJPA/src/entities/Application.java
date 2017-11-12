@@ -3,7 +3,9 @@ package entities;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,6 +16,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Application {
@@ -32,10 +35,12 @@ public class Application {
 	private String coverLetter;
 	private String notes;
 
-	@OneToMany(mappedBy = "application")
+	@JsonManagedReference(value="appToResponses")
+	@OneToMany(mappedBy = "application", cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	private Set<Response> responses;
 
-	@OneToMany(mappedBy = "response")
+	@JsonManagedReference(value="appToInterviews")
+	@OneToMany(mappedBy = "response", cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	private Set<Interview> interviews;
 
 	@JsonBackReference

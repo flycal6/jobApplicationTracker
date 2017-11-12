@@ -15,13 +15,14 @@ public class DataSecurityInterceptor implements HandlerInterceptor {
 			throws Exception {
 		// check for a "user" in session. If one exists, return true, otherwise return
 		// false
+//		System.out.println(request.getSession().getAttribute("user"));
 		Object objUser = request.getSession().getAttribute("user");
 		if (objUser != null) {
 			User user = (User) objUser;
 
 			// compare id in url to id from User obj
 			int id = Integer.parseInt(request.getRequestURI().split("/")[4]);
-			System.out.println(request.getRequestURI());
+//			System.out.println("id" + id + ", url: " + request.getRequestURI());
 
 			if (id == user.getId()) {
 				return true;

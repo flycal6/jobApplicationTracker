@@ -11,6 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Interview {
 
@@ -32,10 +34,12 @@ public class Interview {
 
 	/***************** Gets and Sets *************************************/
 
+	@JsonBackReference(value="appToInterviews")
 	@ManyToOne
 	@JoinColumn(name = "applicationId")
 	private Application application;
 
+	@JsonBackReference(value="responseToInterviews")
 	@ManyToOne
 	@JoinColumn(name = "responseId")
 	private Response response;

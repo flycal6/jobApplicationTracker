@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Response {
@@ -29,11 +33,13 @@ public class Response {
 	private Boolean interviewRequested;
 	private String notes;
 
+	@JsonBackReference(value="appToResponses")
 	@ManyToOne
 	@JoinColumn(name = "applicationId")
 	private Application application;
 	
-	@OneToMany(mappedBy="response")
+	@JsonManagedReference(value="responseToInterviews")
+	@OneToMany(mappedBy="response", fetch=FetchType.EAGER)
 	private Set<Interview> interviews;
 
 	/***************** Gets and Sets *************************************/

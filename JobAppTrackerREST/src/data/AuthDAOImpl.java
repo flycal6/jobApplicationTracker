@@ -41,7 +41,6 @@ public class AuthDAOImpl implements AuthDAO {
 		
 		if(users.size() > 0) {
 			boolean doMatch = encoder.matches(u.getPassword(), users.get(0).getPassword());
-			
 			if(doMatch) {
 				return users.get(0);
 			}

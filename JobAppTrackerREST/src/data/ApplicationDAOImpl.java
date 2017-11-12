@@ -1,15 +1,29 @@
 package data;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import entities.Application;
 
+@Repository
+@Transactional
 public class ApplicationDAOImpl implements ApplicationDAO {
+	
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
 	public Set<Application> index(int uid) {
-		// TODO Auto-generated method stub
-		return null;
+		String q = "SELECT a FROM Application a";
+		List<Application> apps = em.createQuery(q, Application.class).getResultList();
+		return new HashSet<>(apps);
 	}
 
 	@Override
