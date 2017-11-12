@@ -1,7 +1,7 @@
 angular.module('appModule')
 	.component('application', {
 		templateUrl: 'app/appModule/application/application.component.html',
-		controller: function(appService, $scope, $location){
+		controller: function(appService, $scope, $location, $timeout){
 			var vm = this;
 			vm.loading = 1;
 			vm.applicationSelected = null;
@@ -24,6 +24,11 @@ angular.module('appModule')
 			};
 			
 			reload();
+			
+/******************************* show create form ***************************************/
+			$scope.$on('viewApps', function(){
+				vm.createApplication = null;
+			});
 			
 /******************************* show create form ***************************************/
 			$scope.$on('create', function(){

@@ -1,0 +1,25 @@
+<div class="container">
+
+    <!-- ******************* index view of applications *************************  -->
+    <!-- <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected || vm.createApplication" ng-show="!vm.createApplication"> -->
+        <h1 class="display-4">All Responses</h1>
+        <hr>
+        <div class="row-hover" ng-repeat="res in vm.responses">
+	        <div class="row">
+	            <div class="col-sm-3 lead">{{res.date | date:'EEE MMM d, y' : 'UTC'}}</div>
+	            <div class="col-sm-3 lead">{{res.name}}</div>
+	            <div class="col-sm-3 lead">{{res.email}} {{res.phone}}</div>
+	            <div class="col-sm-3 lead">Interview Request: {{res.interviewRequested}}</div>
+	            <div class="col-sm-12 lead">{{res.notes}}</div>
+	            <!-- <div class="col-sm-1 btn btn-outline-danger" ng-click="vm.deleteSelected(app)">X</div> -->
+	            <!-- <div class="w-100 d-none d-md-block" ng-click="vm.setSelected(app)" ng-repeat="res in app.responses">
+	                <div class="col-6">
+	                		Interview Request: {{res.interviewRequested}}
+	                </div>
+	            </div> -->
+	        </div>
+        <hr>
+<!--         <hr ng-if="!$last"> -->
+        </div>
+    <!-- </div> -->
+</div>
