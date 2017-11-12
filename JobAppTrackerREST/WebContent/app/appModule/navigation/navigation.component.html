@@ -23,6 +23,7 @@
       <a id="brandLogo" class="navbar-brand" href="#/">JDBC</a>
       <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.login()" ng-hide="vm.checkLogIn()">Login</button>
       <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.register()" ng-hide="vm.checkLogIn()">Register</button>
+      <button class="btn btn-outline-primary btn-sm, navButtons" ng-click="vm.createApp()" ng-show="vm.checkLogIn()">New App</button>
       <logout ng-show="vm.checkLogIn()"></logout>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon btn-sm"></span>

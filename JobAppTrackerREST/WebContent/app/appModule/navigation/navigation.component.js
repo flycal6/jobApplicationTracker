@@ -1,6 +1,6 @@
 angular.module('appModule').component('navigation', {
 	templateUrl: 'app/appModule/navigation/navigation.component.html',
-	controller: function($location, authService){
+	controller: function($location, authService, $rootScope){
 		var vm = this;
 		
 /************ Used to show or hide nav buttons depending if user is logged in *****************/
@@ -21,6 +21,11 @@ angular.module('appModule').component('navigation', {
 		vm.login = function(){
 			$location.path('/login');
 		};
+/************ broadcast to create new application ****************************************************/
+		vm.createApp = function(){
+			$rootScope.$broadcast('create');
+		}
+		
 	},
 	controllerAs: 'vm'
 });

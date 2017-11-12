@@ -1,40 +1,108 @@
 <div class="container">
-	<h1 class="display-4">Submitted Applications</h1>
 
-	<div class="row" ng-repeat="app in vm.applications">
-		<div class="col-sm-4">Date Applied: {{app.date}}</div>
-		<div class="col-sm-4">Company: {{app.companyName}}</div>
-		<div class="col-sm-4">Location: {{app.jobLocation}}</div>
-	</div>
-
-	<div class="row" ng-repeat="app in vm.applications">
-		<div class="col-sm-4">Applied Via: {{app.appliedVia}}</div>
-		<div class="col-sm-4">Resume Sent: {{app.resume}}</div>
-		<div class="col-sm-4">Cover Letter Sent: {{app.coverLetter}}</div>
-	</div>
-
-	<div class="row" ng-repeat="app in vm.applications">
-		<div ng-repeat="res in app.responses">
-			<div class="col-sm-4">Date: {{res.date}}</div>
-			<div class="col-sm-4">Name: {{res.name}}</div>
-			<div class="col-sm-4">Email: {{res.email}}</div>
-		</div>
+	<!-- ******************* create new application *************************  -->
+	<div ng-show="vm.loading == 0 && vm.createApplication">
+		<h1 class="display-4">New Application</h1>
+		<form>
+			<div class="form-row">
+				<div class="form-group col-md-6">
+					<label for="date">Date</label> <input type="datetime"
+						class="form-control" id="date" placeholder="date">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="company">Company</label> <input class="form-control"
+						id="company" placeholder="company name">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="location">Location</label> <input class="form-control"
+					id="location" placeholder="1234 Main St">
+			</div>
+			<div class="form-group">
+				<label for="applied">Applied Via</label> <input class="form-control"
+					id="applied" placeholder="contacted via?">
+			</div>
+			<div class="form-row">
+				<div class="form-group col-md-3">
+					<label for="resume">Resume</label> <input class="form-control"
+						id="resume" placeholder="version?">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="cover">Cover Letter</label> <input id="cover"
+						class="form-control" placeholder="version?">
+				</div>
+				<div class="form-group col-md-6">
+					<label for="notes">Notes</label> <input class="form-control"
+						id="notes">
+				</div>
+			</div>
+			<div class="form-group"></div>
+			<button type="submit" class="btn btn-primary">Add
+				Application</button>
+		</form>
 	</div>
 	
-	<div class="row" ng-repeat="app in vm.applications">
-		<div ng-repeat="res in app.responses">
-			<div class="col-sm-4">Phone: {{res.phone}}</div>
-			<div class="col-sm-4">Interview Request: {{res.interviewRequested}}</div>
-			<div class="col-sm-4">Notes: {{res.notes}}</div>
+	<!-- ******************* index view of applications *************************  -->
+	<div ng-hide="vm.loading == 1 || vm.applicationSelected" ng-show="!vm.createApplication">
+		<h1 class="display-4">Submitted Applications</h1>
+		<div class="row" ng-repeat="app in vm.applications" ng-click="vm.setSelected(app)">
+			<div class="col-sm-4">Date Applied: {{app.date}}</div>
+			<div class="col-sm-4">Company: {{app.companyName}}</div>
+			<div class="col-sm-4">Location: {{app.jobLocation}}</div>
+
+			<div ng-repeat="res in app.responses">
+				<div class="col-sm-4">Interview Request:
+					{{res.interviewRequested}}</div>
+			</div>
 		</div>
+		<hr>
 	</div>
 
-	<div class="row" ng-repeat="app in vm.applications">
-		<div ng-repeat="int in app.interviews">
-			<div class="col-sm-4">Date: {{int.date}}</div>
-			<div class="col-sm-4">Name: {{int.name}}</div>
-			<div class="col-sm-4">Email: {{int.email}}</div>
+	<!-- ******************* detail view of application with responses and interviews *************************  -->
+	<div ng-show="vm.loading == 0 && vm.applicationSelected">
+		<h1 class="display-4">{{vm.applicationSelected.companyName}} Application</h1>
+		<div class="row" ng-repeat="app in vm.applications">
+			<div class="col-sm-4">Date Applied: {{app.date}}</div>
+			<div class="col-sm-4">Company: {{app.companyName}}</div>
+			<div class="col-sm-4">Location: {{app.jobLocation}}</div>
 		</div>
+
+		<div class="row" ng-repeat="app in vm.applications">
+			<div class="col-sm-4">Applied Via: {{app.appliedVia}}</div>
+			<div class="col-sm-4">Resume Sent: {{app.resume}}</div>
+			<div class="col-sm-4">Cover Letter Sent: {{app.coverLetter}}</div>
+		</div>
+
+		<div class="row" ng-repeat="app in vm.applications">
+			<div ng-repeat="res in app.responses">
+				<div class="col-sm-4">Date: {{res.date}}</div>
+				<div class="col-sm-4">Name: {{res.name}}</div>
+				<div class="col-sm-4">Email: {{res.email}}</div>
+			</div>
+		</div>
+
+		<div class="row" ng-repeat="app in vm.applications">
+			<div ng-repeat="res in app.responses">
+				<div class="col-sm-4">Phone: {{res.phone}}</div>
+				<div class="col-sm-4">Interview Request:
+					{{res.interviewRequested}}</div>
+				<div class="col-sm-4">Notes: {{res.notes}}</div>
+			</div>
+		</div>
+
+		<div class="row" ng-repeat="app in vm.applications">
+			<div ng-repeat="int in app.interviews">
+				<div class="col-sm-4">Date: {{int.date}}</div>
+				<div class="col-sm-4">Name: {{int.name}}</div>
+				<div class="col-sm-4">Email: {{int.email}}</div>
+			</div>
+		</div>
+		<hr>
 	</div>
-	<hr>
+
+	<!-- **************** only show while waiting for server response *************************** -->
+	<div id="loading" ng-show="vm.loading == 1">
+		<p class="display-3 text-center">Collecting Applications</p>
+		<img class="img-fluid mx-auto d-block" src="./img/catLoader.gif">
+	</div>
 </div>
