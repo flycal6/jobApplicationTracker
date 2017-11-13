@@ -11,8 +11,6 @@ angular.module('appModule')
 			
 /******************************* show all responses, hide apps ***************************************/
 			$scope.$on('viewResponses', function(){
-//				console.log('click recieved')
-//				$location.path('/responses');
 				vm.showResponses();
 			});
 			
@@ -20,6 +18,12 @@ angular.module('appModule')
 				vm.hideApps = true;
 			};
 			
+/******************************* show apps, hide responses ***************************************/
+			$scope.$on('viewApps', function(){
+				vm.createApplication = null;
+				vm.hideApps = false;
+				vm.upateApplication = null;
+			});
 			
 /******************************* refresh page ***************************************/
 			var reload = function(){
@@ -36,13 +40,6 @@ angular.module('appModule')
 			};
 			
 			reload();
-			
-/******************************* show apps, hide responses ***************************************/
-			$scope.$on('viewApps', function(){
-				vm.createApplication = null;
-				vm.hideApps = false;
-				vm.upateApplication = null;
-			});
 			
 /******************************* show create form ***************************************/
 			$scope.$on('create', function(){
@@ -64,7 +61,6 @@ angular.module('appModule')
 			vm.newApp = {};
 			vm.newAppSubmit = function(newApp){
 				vm.loading = 1;
-				console.log(newApp);
 				appService.create(newApp).then(function(res){
 					console.log(res)
 					vm.createApplication = null;
@@ -77,15 +73,12 @@ angular.module('appModule')
 				vm.updateApp = app;
 				vm.updateApp.date = new Date(app.date);
 				vm.upateApplication = true;
-				console.log(vm.updateApp)
 			};
 			
 /******************************* show update form ***************************************/
 			vm.updateAppSubmit = function(app){
 				vm.loading = 1;
-				console.log(app);
 				appService.update(app).then(function(res){
-					console.log(res);
 					vm.updateApplication = false;
 					vm.loading = 0;
 				})
@@ -94,9 +87,7 @@ angular.module('appModule')
 /******************************* Delete Application ***************************************/
 			vm.deleteSelected = function(app){
 				vm.loading = 1;
-				console.log(app);
 				appService.destroy(app).then(function(res){
-					console.log(res);
 					vm.loading = 0;
 					reload();
 				});
@@ -104,7 +95,6 @@ angular.module('appModule')
 			
 /******************************* show detail view ***************************************/
 			vm.setSelected = function(app){
-				console.log(app)
 				vm.applicationSelected = app;
 			};
 		},
