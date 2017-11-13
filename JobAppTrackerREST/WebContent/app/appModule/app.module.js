@@ -4,9 +4,6 @@ angular.module('appModule', [ 'ngRoute', 'authModule' ]).config(
 			.when('/', {
 				template : '<application></application>'
 			})
-			.when('/responses', {
-				template: '<response></response>'
-			})
 			.when('/navigation', {
 				template : '<navigation></navigation>'
 			})

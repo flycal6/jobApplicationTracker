@@ -1,7 +1,7 @@
 angular.module('appModule')
 	.component('application', {
 		templateUrl: 'app/appModule/application/application.component.html',
-		controller: function(appService, $scope, $location, $timeout, responseService){
+		controller: function(appService, $scope, $location, $rootScope, responseService){
 			var vm = this;
 			vm.loading = 1;
 			vm.applicationSelected = null;
@@ -23,6 +23,7 @@ angular.module('appModule')
 				vm.createApplication = null;
 				vm.hideApps = false;
 				vm.upateApplication = null;
+				vm.applicationSelected = null;
 			});
 			
 /******************************* refresh page ***************************************/
@@ -54,7 +55,8 @@ angular.module('appModule')
 			
 /******************************* show response creation form ***************************************/
 			vm.viewResponseCreationForm = function(aid){
-				
+				$rootScope.$broadcast('showCreateResponseForm', aid);
+				vm.hideApps = true;
 			};
 			
 /******************************* create new application ***************************************/

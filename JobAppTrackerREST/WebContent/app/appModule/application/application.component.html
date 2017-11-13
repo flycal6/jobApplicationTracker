@@ -64,7 +64,7 @@
     <div ng-show="vm.loading == 0 && vm.applicationSelected && !vm.upateApplication && !vm.hideApps">
         <h1 class="display-4">{{vm.applicationSelected.companyName}}
         <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
-        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected.id)">Add A Response</button>
+        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected)">Add A Response</button>
         </h1>
         <hr>
         <div class="row">
