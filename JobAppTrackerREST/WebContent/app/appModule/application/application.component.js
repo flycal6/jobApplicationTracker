@@ -37,10 +37,11 @@ angular.module('appModule')
 			
 			reload();
 			
-/******************************* show create form ***************************************/
+/******************************* show apps, hide responses ***************************************/
 			$scope.$on('viewApps', function(){
 				vm.createApplication = null;
 				vm.hideApps = false;
+				vm.upateApplication = null;
 			});
 			
 /******************************* show create form ***************************************/
