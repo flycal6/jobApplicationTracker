@@ -1,13 +1,25 @@
 angular.module('appModule')
 	.component('application', {
 		templateUrl: 'app/appModule/application/application.component.html',
-		controller: function(appService, $scope, $location, $timeout){
+		controller: function(appService, $scope, $location, $timeout, responseService){
 			var vm = this;
 			vm.loading = 1;
 			vm.applicationSelected = null;
 			vm.createApplication = null;
 			vm.upateApplication = null;
 			vm.applications = [];
+			
+/******************************* show all responses, hide apps ***************************************/
+			$scope.$on('viewResponses', function(){
+//				console.log('click recieved')
+//				$location.path('/responses');
+				vm.showResponses();
+			});
+			
+			vm.showResponses = function(){
+				vm.hideApps = true;
+			};
+			
 			
 /******************************* refresh page ***************************************/
 			var reload = function(){
@@ -28,6 +40,7 @@ angular.module('appModule')
 /******************************* show create form ***************************************/
 			$scope.$on('viewApps', function(){
 				vm.createApplication = null;
+				vm.hideApps = false;
 			});
 			
 /******************************* show create form ***************************************/
@@ -38,7 +51,14 @@ angular.module('appModule')
 			vm.setCreateApplication = function(){
 				vm.applicationSelected = null;
 				vm.createApplication = true;
+				vm.hideApps = false;
 			};
+			
+/******************************* show response creation form ***************************************/
+			vm.viewResponseCreationForm = function(aid){
+				
+			};
+			
 /******************************* create new application ***************************************/
 			vm.newApp = {};
 			vm.newAppSubmit = function(newApp){

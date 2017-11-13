@@ -11,15 +11,23 @@ angular.module('appModule')
 			});
 			
 /**************************** view all responses *****************************/
-			$scope.$on('viewAllResponses', function(){
-//				console.log('click recieved')
+//			$scope.$on('viewResponses', function(){
+////				console.log('click recieved')
+////				$location.path('/responses');
+//				vm.setResponsePath();
+//			});
+//			
+//			vm.setResponsePath = function(){
 //				$location.path('/responses');
-				vm.setResponsePath();
-			});
+//			}
+
+/**************************** add a response to an application *****************************/
+			$scope.$on('createResponseForm', function(e, args){
+				console.log('broadcast received')
+				console.log(args)
+			})
 			
-			vm.setResponsePath = function(){
-				$location.path('/responses');
-			}
+			
 		},
 		controllerAs: 'vm'
 	});

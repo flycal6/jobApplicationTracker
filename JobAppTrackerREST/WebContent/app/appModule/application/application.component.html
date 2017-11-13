@@ -1,7 +1,7 @@
 <div class="container">
 
     <!-- ******************* create new application *************************  -->
-    <div ng-show="vm.loading == 0 && vm.createApplication">
+    <div ng-show="vm.loading == 0 && vm.createApplication && !vm.hideApps">
         <h1 class="display-4">New Application</h1>
         <form>
             <div class="form-row">
@@ -41,7 +41,7 @@
     </div>
 
     <!-- ******************* index view of applications *************************  -->
-    <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected || vm.createApplication" ng-show="!vm.createApplication">
+    <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected || vm.createApplication || vm.hideApps" >
         <h1 class="display-4">Submitted Applications</h1>
         <hr>
         <div class="row-hover" ng-repeat="app in vm.applications">
@@ -61,9 +61,10 @@
     </div>
 
     <!-- ******************* detail view of application with responses and interviews *************************  -->
-    <div ng-show="vm.loading == 0 && vm.applicationSelected && !vm.upateApplication">
+    <div ng-show="vm.loading == 0 && vm.applicationSelected && !vm.upateApplication && !vm.hideApps">
         <h1 class="display-4">{{vm.applicationSelected.companyName}}
         <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
+        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected.id)">Add A Response</button>
         </h1>
         <hr>
         <div class="row">
@@ -103,7 +104,7 @@
     </div>
     
     <!-- ******************* update application *************************  -->
-    <div ng-show="vm.loading == 0 && vm.upateApplication && !vm.createApplication">
+    <div ng-show="vm.loading == 0 && vm.upateApplication && !vm.createApplication && !vm.hideApps">
         <h1 class="display-4">Update Application</h1>
         <form>
             <div class="form-row">
@@ -144,6 +145,8 @@
             		Update Application</button>
         </form>
     </div>
+    
+    <response ng-show="vm.hideApps && vm.loading == 0"></response>
 
     <!-- **************** only show while waiting for server response *************************** -->
     <div id="loading" ng-show="vm.loading == 1">

@@ -1,5 +1,5 @@
 angular.module('appModule')
-	.factory('responseService', function($http, authService){
+	.factory('responseService', function($http, authService, $location){
 		var service = {};
 		
 		service.index = function(){
@@ -18,11 +18,11 @@ angular.module('appModule')
 //			});
 //		};
 		
-		service.create = function(response){
+		service.create = function(aid){
 			var uid = authService.getToken().id;
 			return $http({
 				method: 'POST',
-				url: 'rest/user/' + uid + '/response/' + response.applicationId,
+				url: 'rest/user/' + uid + '/response/' + aid,
 				headers: {
 					'Content-Type': 'application/json'
 				},
