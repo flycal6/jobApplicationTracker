@@ -1,6 +1,6 @@
 <div class="container">
 
-    <!-- ******************* index view of applications *************************  -->
+    <!-- ******************* index view of responses ****************************************************************  -->
     <div class="mt-3" ng-hide="vm.loading == 1 || vm.showCreateResponseForm">
         <h1 class="display-4">All Responses</h1>
         <hr>
@@ -17,6 +17,7 @@
         </div>
 	</div>
         
+    <!-- ******************* add a response to an application *******************************************************  -->
         <div ng-show="vm.loading == 0 && vm.showCreateResponseForm">
         <h3 class="display-4">Add Response to {{vm.appToAddResponse.companyName}} Application</h3>
         <form>
