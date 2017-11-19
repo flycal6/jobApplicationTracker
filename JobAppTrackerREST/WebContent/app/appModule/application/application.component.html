@@ -40,18 +40,20 @@
         </form>
     </div>
 
-    <!-- ******************* index view of applications *************************  -->
+    <!-- ******************* index view of applications ******************************************************  -->
     <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected || vm.createApplication || vm.hideApps" >
         <h1 class="display-4">Submitted Applications</h1>
         <hr>
         <div class="row-hover" ng-repeat="app in vm.applications">
 	        <div class="row">
-	            <div class="col-sm-3 lead" ng-click="vm.setSelected(app)">{{app.date | date:'EEE MMM d, y' : 'UTC'}}</div>
-	            <div class="col-sm-6 lead" ng-click="vm.setSelected(app)">{{app.companyName}}, {{app.jobLocation}}</div>
-	            <div class="col-sm-1 btn btn-outline-danger" ng-click="vm.deleteSelected(app)">X</div>
+	            <div class="col-sm-4 lead" ng-click="vm.setSelected(app)">{{app.date | date:'EEE MMM d, y' : 'UTC'}}</div>
+	            <div class="col-sm-4 lead" ng-click="vm.setSelected(app)">{{app.companyName}}</div>
+	            <div class="col-sm-4 lead" ng-click="vm.setSelected(app)">{{app.jobLocation}}</div>
+	            <!-- <div class="col-sm-1 btn btn-outline-danger" ng-click="vm.deleteSelected(app)">X</div> -->
+            		<div class="col-sm-6" ng-if="app.responses.length > 0">Responses Received:</div>
 	            <div class="w-100 d-none d-md-block" ng-click="vm.setSelected(app)" ng-repeat="res in app.responses">
-	                <div class="col-6">
-	                		Interview Request: {{res.interviewRequested}}
+	                <div class="col-12">
+	                		{{res.date | date:'EEE MMM d, y' : 'UTC'}}
 	                </div>
 	            </div>
 	        </div>
@@ -62,34 +64,39 @@
 
     <!-- ******************* detail view of application with responses and interviews *************************  -->
     <div ng-show="vm.loading == 0 && vm.applicationSelected && !vm.upateApplication && !vm.hideApps">
-        <h1 class="display-4">{{vm.applicationSelected.companyName}}
-        <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
-        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected)">Add A Response</button>
-        </h1>
-        <hr>
+        <h2 class="display-4">{{vm.applicationSelected.companyName}} Application
+        </h2>
         <div class="row">
-            <div class="col-sm-4">Date Applied: {{vm.applicationSelected.date | date:'EEE MMM d, y h:mm a' : 'UTC'}}</div>
-            <div class="col-sm-4">Company: {{vm.applicationSelected.companyName}}</div>
-            <div class="col-sm-4">Location: {{vm.applicationSelected.jobLocation}}</div>
+	        <div class="col-6">
+	    		    <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
+	        </div>
+	        <div class="col-6">
+		        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected)">Add A Response</button>
+	        </div>
+        </div>
+        <!-- <hr> -->
+        <div class="row">
+        <div class="col-12 detailApp">
+            <div class="col-6">Date Applied: {{vm.applicationSelected.date | date:'EEE MMM d, y h:mm a' : 'UTC'}}</div>
+            <div class="col-sm-6">Company: {{vm.applicationSelected.companyName}}</div>
+            <div class="col-sm-6">Location: {{vm.applicationSelected.jobLocation}}</div>
+            <div class="col-sm-6">Applied Via: {{vm.applicationSelected.appliedVia}}</div>
+            <div class="col-sm-6">Resume Version: {{vm.applicationSelected.resume}}</div>
+            <div class="col-sm-6">Cover Letter: {{vm.applicationSelected.coverLetter}}</div>
+        </div>
         </div>
 
-        <div class="row">
-            <div class="col-sm-4">Applied Via: {{vm.applicationSelected.appliedVia}}</div>
-            <div class="col-sm-4">Resume Sent: {{vm.applicationSelected.resume}}</div>
-            <div class="col-sm-4">Cover Letter Sent: {{vm.applicationSelected.coverLetter}}</div>
-        </div>
-
-        <div ng-repeat="res in vm.applicationSelected.responses">
-        		<h2>Responses from {{res.name}}</h2>
+        <div class="appResonse" ng-repeat="res in vm.applicationSelected.responses">
+        		<h2>Response from {{res.name}}</h2>
         		<div class="row">
-	            <div class="col-sm-4">Date: {{res.date}}</div>
+	            <div class="col-sm-4">Date: {{res.date | date:'EEE MMM d, y' : 'UTC'}}</div>
 	            <div class="col-sm-4">Name: {{res.name}}</div>
 	            <div class="col-sm-4">Email: {{res.email}}</div>
 	            <div class="col-sm-4">Phone: {{res.phone}}</div>
 	            <div class="col-sm-4">Interview Request: {{res.interviewRequested}}</div>
 	            <div class="col-sm-8">Notes: {{res.notes}}</div>
             </div>
-            <hr>
+            <hr ng-if="!$last">
         </div>
 
 

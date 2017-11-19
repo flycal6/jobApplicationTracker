@@ -1,3 +1,6 @@
+body {
+	font-family: 'Nunito', sans-serif;
+}
 .row-hover {
   color: #000;
   transition: background 0.5s linear;
@@ -19,4 +22,16 @@ hr {
 }
 #brandLogo img {
 	max-height: 2em;
+}
+
+.appResonse {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.detailApp {
+	border: solid 1px rgb(0, 123, 255);
+	border-radius: .25em;
+	margin-top: 1em;
+	background-color: rgba(0, 123, 255, 0.1);
 }
