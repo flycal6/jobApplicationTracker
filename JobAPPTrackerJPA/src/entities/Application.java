@@ -1,5 +1,16 @@
 package entities;
-
+/*
+ * Add the following fields
+ * job title
+ * currently hiring
+ * link to description
+ * contact name
+ * contact email
+ * referral contact
+ * change appliedVia to 'source'
+ * interest level
+ * follow up
+ */
 import java.util.Date;
 import java.util.Set;
 
