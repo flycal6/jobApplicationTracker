@@ -35,3 +35,11 @@ hr {
 	margin-top: 1em;
 	background-color: rgba(0, 123, 255, 0.1);
 }
+
+#interviewRequested {
+	background-color: rgba(66, 244, 131, 0.3);
+}
+
+#offerDiv {
+	background-color: rgba(66, 244, 131, 0.3);
+}
