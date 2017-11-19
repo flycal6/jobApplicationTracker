@@ -77,11 +77,15 @@ angular.module('appModule')
 				vm.upateApplication = true;
 			};
 			
-/******************************* show update form ***************************************/
+			vm.unsetUpdateApplication = function(){
+				vm.upateApplication = false;				
+			}
+			
+/******************************* perform app update ***************************************/
 			vm.updateAppSubmit = function(app){
 				vm.loading = 1;
 				appService.update(app).then(function(res){
-					vm.updateApplication = false;
+					vm.unsetUpdateApplication();
 					vm.loading = 0;
 				})
 			};
