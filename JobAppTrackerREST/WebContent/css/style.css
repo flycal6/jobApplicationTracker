@@ -34,12 +34,24 @@ hr {
 	border-radius: .25em;
 	margin-top: 1em;
 	background-color: rgba(0, 123, 255, 0.1);
+	max-width: 90%;		
+	margin-left: auto;
+	margin-right: auto;
 }
 
 #interviewRequested {
-	background-color: rgba(66, 244, 131, 0.3);
+	color: rgb(66, 244, 131);
 }
 
 #offerDiv {
+	background-color: rgba(66, 244, 131, 0.3);
+	border: solid 1px rgb(66, 244, 131);
+	border-radius: .25em;
+	max-width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.interviewed {
 	background-color: rgba(66, 244, 131, 0.3);
 }

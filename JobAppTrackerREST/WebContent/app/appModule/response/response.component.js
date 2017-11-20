@@ -26,8 +26,17 @@ angular.module('appModule')
 				console.log(args)
 				vm.appToAddResponse = args;
 				vm.showCreateResponseForm = true;
-			})
+			});
 			
+/**************************** add a response to an application *****************************/
+			vm.newResponseSubmit = function(appId, resObj){
+				responseService.create(appId, resObj).then(function(res){
+					console.log('res created');
+					console.log(res.data);
+					vm.responses.push(res.data);
+					vm.showCreateResponseForm = false;
+				});
+			};
 			
 		},
 		controllerAs: 'vm'

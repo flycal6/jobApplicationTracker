@@ -18,11 +18,11 @@ angular.module('appModule')
 //			});
 //		};
 		
-		service.create = function(aid){
+		service.create = function(aid, response){
 			var uid = authService.getToken().id;
 			return $http({
 				method: 'POST',
-				url: 'rest/user/' + uid + '/response/' + aid,
+				url: 'rest/user/' + uid + '/app/' + aid + '/res',
 				headers: {
 					'Content-Type': 'application/json'
 				},
