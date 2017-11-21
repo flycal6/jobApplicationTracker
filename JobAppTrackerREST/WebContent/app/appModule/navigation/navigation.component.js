@@ -30,7 +30,8 @@ angular.module('appModule').component('navigation', {
 		
 /************ broadcast to view all responses ****************************************************/
 		vm.viewAllResponses = function(){
-			$rootScope.$broadcast('viewResponses');
+//			$rootScope.$broadcast('viewResponses');
+			$location.path('/responses');
 		};
 
 /************ add New App button check ****************************************************/

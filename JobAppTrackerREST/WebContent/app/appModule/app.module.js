@@ -4,8 +4,11 @@ angular.module('appModule', [ 'ngRoute', 'authModule' ]).config(
 			.when('/', {
 				template : '<application></application>'
 			})
-			.when('/navigation', {
-				template : '<navigation></navigation>'
+			.when('/interviews', {
+				template: '<interview></interview>'
+			})
+			.when('/responses', {
+				template : '<response></response>'
 			})
 			.otherwise({
 				template : '<not-found></not-found>'
