@@ -34,7 +34,7 @@ angular.module('authModule').factory('authService', function($http, $cookies) {
 	// Use the auth/register route to create and authenticate the user
 	// On success, use saveToken to store the users id/email
 	service.register = function(user) {
-		console.log(user)
+//		console.log(user)
 		return $http({
 			method : 'POST',
 			url : 'rest/auth/register',
@@ -78,7 +78,14 @@ angular.module('authModule').factory('authService', function($http, $cookies) {
 			url: 'rest/auth/logout',
 		}).then(function(res){
 			removeToken();
-		});
+			return res;
+		}).catch(function(err){
+			console.log('Something went wrong during logout');
+			console.log(err);
+			removeToken();
+			return err;
+			
+		})
 	}
 	return service;
 })

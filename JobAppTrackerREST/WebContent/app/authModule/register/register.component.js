@@ -9,7 +9,6 @@ angular.module('authModule').component('register', {
 			authService.register(user).then(function(res){
 				$location.path('/');
 				vm.loading = 0;
-				window.alert('You have been registered successfully!');
 			});
 		}
 	},
