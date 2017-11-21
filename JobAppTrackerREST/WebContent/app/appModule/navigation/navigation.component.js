@@ -34,6 +34,11 @@ angular.module('appModule').component('navigation', {
 			$location.path('/responses');
 		};
 
+/************ broadcast to view all responses ****************************************************/
+		vm.viewAllInterviews = function(){
+			$location.path('/interviews');
+		};
+		
 /************ add New App button check ****************************************************/
 		vm.rootPath = function(){
 			var path = $location.path();

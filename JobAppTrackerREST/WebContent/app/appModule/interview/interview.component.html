@@ -1,5 +1,19 @@
 <div class="container">
 	<h2>{{'interview component'}}</h2>
+	
+	<div class="row-hover" ng-repeat="i in vm.interviews" ng-class="i.offerMade? 'bg-success': ''">
+	<div class="row">
+		<div class="col-sm-6">{{i.date | date:'EEE MMM d, y' : 'UTC'}}</div>
+		<div class="col-sm-6">{{i.name}}</div>
+		<div class="col-sm-6">{{i.email}} {{i.phone}}</div>
+		<div class="col-sm-6" ng-if="i.offerMade">{{i.offerDetails}}</div>
+		<div class="col-sm-6" ng-if="i.offerMade">{{i.offerLocation}}</div>
+		<div class="col-sm-6" ng-if="i.offerMade">{{i.offerSalary}}</div>
+		<div class="col-sm-6">{{i.notes}}</div>
+	</div>
+		<hr>
+	</div>
+	
     <!-- **************** only show while waiting for server response *************************** -->
     <div id="loading" ng-show="vm.loading == 1">
         <p class="display-3 text-center">Collecting Applications</p>

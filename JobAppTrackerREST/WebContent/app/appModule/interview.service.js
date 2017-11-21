@@ -4,17 +4,17 @@ angular.module('appModule')
 		
 		service.index = function(){
 			var uid = authService.getToken().id;
-			
-			return $httpd({
+			console.log('inside interviewService.index()')
+			return $http({
 				method: 'GET',
-				url: '/rest/user/' + uid + 'interviews'
+				url: 'rest/user/' + uid + '/interviews'
 			});
 		}
 		
 		service.create = function(aid, rid, interview){
 			var uid = authService.getToken().id;
 			
-			return $httpd({
+			return $http({
 				method: 'POST',
 				url: 'rest/user/' + uid + '/app/' + aid + '/res/' + rid,
 				headers: {
