@@ -13,6 +13,8 @@ USE jobtrackerdb;
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fName` varchar(64) NOT NULL,
+  `lName` varchar(64) NOT NULL,
   `email` varchar(255) NOT NULL UNIQUE,
   `password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
@@ -85,4 +87,4 @@ CREATE TABLE `interview` (
 INSERT INTO `interview` (date, name, email, phone, notes, applicationId, responseId)
     VALUES ('2017-12-01 13:00:00', 'Dick Dickers', 'dick@companyb.com', '555-458-9999', 'made a follow up interview', 3, 4);
 INSERT INTO `interview` (date, name, email, phone, notes, offerMade, offerSalary, offerLocation, offerDetails, applicationId, responseId)
-    VALUES ('2017-12-03 14:30:00', 'Frank Frankers', 'frankk@companyb.com', '555-458-0000', 'got an offer', 1, '65k/year', 'Aurora, CO', 'insurance included', 2, 2);
+    VALUES ('2017-12-03 14:30:00', 'Frank Frankers', 'frankk@companyb.com', '555-458-0000', 'got an offer', 1, '65k/year', 'Aurora, CO', 'insurance included', 3, 4);
