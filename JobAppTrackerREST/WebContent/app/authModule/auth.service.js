@@ -35,7 +35,6 @@ angular.module('authModule').factory('authService', function($http, $cookies) {
 	// On success, use saveToken to store the users id/email
 	service.register = function(user) {
 		console.log(user)
-		user.points = "0";
 		return $http({
 			method : 'POST',
 			url : 'rest/auth/register',
