@@ -18,7 +18,17 @@ angular.module('appModule')
 //				vm.showUpdateResponseForm = true;
 //			});
 			
-			
+/**************************** return true if a response contains an offer made during subsequent interview *****************************/
+//			used to apply bg-success class to any response with a job offer
+			vm.offerCheck = function(res){
+				for (var i = 0; i < vm.responses.length; i++) {
+					if(res.interviews.length > 0){
+						if(res.interviews[i].offerMade){
+							return true;
+						}
+					}
+				}
+			}			
 
 /**************************** add a response to an application *****************************/
 			$scope.$on('showCreateResponseForm', function(e, args){
