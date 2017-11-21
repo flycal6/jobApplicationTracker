@@ -21,10 +21,6 @@ angular.module('appModule').component('navigation', {
 		vm.login = function(){
 			$location.path('/login');
 		};
-/************ broadcast to create new application ****************************************************/
-		vm.createApp = function(){
-			$rootScope.$broadcast('create');
-		};
 		
 /************ view applications page ****************************************************/
 		vm.viewApps = function(){

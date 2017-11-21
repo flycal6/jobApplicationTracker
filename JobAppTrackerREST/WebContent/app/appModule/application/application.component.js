@@ -43,10 +43,6 @@ angular.module('appModule')
 			reload();
 			
 /******************************* show create form ***************************************/
-			$scope.$on('create', function(){
-				vm.setCreateApplication();
-			});
-			
 			vm.setCreateApplication = function(){
 				vm.applicationSelected = null;
 				vm.createApplication = true;

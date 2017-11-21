@@ -42,7 +42,7 @@
 
     <!-- ******************* index view of applications ******************************************************  -->
     <div class="mt-3" ng-hide="vm.loading == 1 || vm.applicationSelected || vm.createApplication || vm.hideApps" >
-        <h1 class="display-4">Submitted Applications</h1>
+        <h1 class="display-4">Submitted Applications <button class="btn btn-outline-primary" ng-click="vm.setCreateApplication()"> +</button></h1>
         <hr>
         <div class="row-hover" ng-repeat="app in vm.applications">
 	        <div class="row">
