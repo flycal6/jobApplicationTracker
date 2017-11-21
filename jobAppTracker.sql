@@ -6,8 +6,8 @@ USE jobtrackerdb;
 -- Add user
 -- Uncomment the lines below as needed
 -- DROP USER 'jobtracker'@'localhost';
--- CREATE USER 'jobtracker'@'localhost' IDENTIFIED BY 'jobtracker';
--- GRANT ALL PRIVILEGES ON jobtrackerdb.* TO 'jobtracker'@'localhost';
+CREATE USER 'jobtracker'@'localhost' IDENTIFIED BY 'jobtracker';
+GRANT ALL PRIVILEGES ON jobtrackerdb.* TO 'jobtracker'@'localhost';
 
 --  Build tables
 DROP TABLE IF EXISTS `user`;
