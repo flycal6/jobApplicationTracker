@@ -22,25 +22,20 @@ public class ResponseDAOImpl implements ResponseDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public Set<Response> index(int uid) {
 		String q = "SELECT r FROM Response r WHERE r.application.user.id = :uid";
-		List<Response> responses = em.createQuery(q, Response.class)
-										.setParameter("uid", uid)
-										.getResultList();
+		List<Response> responses = em.createQuery(q, Response.class).setParameter("uid", uid).getResultList();
 		return new HashSet<>(responses);
 	}
 
 	@Override
 	public Response show(int uid, int rid) {
 		String q = "SELECT r FROM Response r WHERE r.application.user.id = :uid AND r.id = :rid";
-		Response r = em.createQuery(q, Response.class)
-						.setParameter("uid", uid)
-						.setParameter("rid", rid)
-						.getResultList()
-						.get(0);
-		if(r != null) {
+		Response r = em.createQuery(q, Response.class).setParameter("uid", uid).setParameter("rid", rid).getResultList()
+				.get(0);
+		if (r != null) {
 			return r;
 		}
 		return null;
@@ -56,7 +51,7 @@ public class ResponseDAOImpl implements ResponseDAO {
 			em.persist(r);
 			em.flush();
 			return r;
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -65,12 +60,8 @@ public class ResponseDAOImpl implements ResponseDAO {
 	@Override
 	public Response update(int uid, int aid, int rid, String responseJson) {
 		String q = "SELECT r FROM Response r WHERE r.id = :rid AND r.application.id = :aid AND r.application.user.id = :uid";
-		Response r = em.createQuery(q, Response.class)
-						.setParameter("rid", rid)
-						.setParameter("aid", aid)
-						.setParameter("uid", uid)
-						.getResultList()
-						.get(0);
+		Response r = em.createQuery(q, Response.class).setParameter("rid", rid).setParameter("aid", aid)
+				.setParameter("uid", uid).getResultList().get(0);
 		ObjectMapper om = new ObjectMapper();
 		try {
 			Response omr = om.readValue(responseJson, Response.class);
@@ -80,12 +71,12 @@ public class ResponseDAOImpl implements ResponseDAO {
 			r.setName(omr.getName());
 			r.setPhone(omr.getPhone());
 			r.setNotes(omr.getNotes());
-			
-			if(r != null) {
+
+			if (r != null) {
 				return r;
 			}
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return null;
@@ -95,21 +86,18 @@ public class ResponseDAOImpl implements ResponseDAO {
 	public Boolean destroy(int uid, int rid) {
 		try {
 			String q = "SELECT r FROM Response r WHERE r.id = :rid AND r.application.user.id = :uid";
-			Response r = em.createQuery(q, Response.class)
-							.setParameter("rid", rid)
-							.setParameter("uid", uid)
-							.getResultList()
-							.get(0);
+			Response r = em.createQuery(q, Response.class).setParameter("rid", rid).setParameter("uid", uid)
+					.getResultList().get(0);
 			System.out.println(r);
 			em.remove(r);
-			if(em.find(Response.class, rid) != null) {
+			if (em.find(Response.class, rid) != null) {
 				return false;
 			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return null;
 	}
 
