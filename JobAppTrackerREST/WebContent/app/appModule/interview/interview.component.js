@@ -17,6 +17,11 @@ angular.module('appModule')
 			};
 			reload();
 			
+			vm.viewInterviewCreationForm = function(res, app){
+				interviewService.storeResAndApp(res, app).then(function(response){
+					console.log(response);
+				})
+			};
 			
 		},
 		controllerAs: 'vm'

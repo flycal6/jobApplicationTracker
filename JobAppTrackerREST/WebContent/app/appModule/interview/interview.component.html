@@ -1,6 +1,7 @@
 <div class="container">
 	<h2>{{'interview component'}}</h2>
 	
+    <!-- ********************************* view all interviews******************************************* -->
 	<div class="row-hover" ng-repeat="i in vm.interviews" ng-class="i.offerMade? 'bg-success': ''">
 	<div class="row">
 		<div class="col-sm-6">{{i.date | date:'EEE MMM d, y' : 'UTC'}}</div>
@@ -14,6 +15,55 @@
 		<hr>
 	</div>
 	
+  <!-- ******************* add an interview to a response/application *******************************************************  -->
+    <div ng-show="vm.loading == 0 && vm.viewIntForm">
+        <h3 class="display-4">Add Response to {{vm.appToAddResponse.companyName}} Application</h3>
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="date">Date</label>
+                    <input type="datetime-local" class="form-control" id="date" placeholder="date" ng-model="vm.newResponse.date">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="company">Contact Name</label>
+                    <input class="form-control" id="company" placeholder="contact name" ng-model="vm.newResponse.name">
+                </div>
+            </div>
+            <div class="form-row">
+	            <div class="form-group col-md-6">
+	                <label for="location">Email</label>
+	                <input class="form-control" id="location" placeholder="email" ng-model="vm.newResponse.email">
+	            </div>
+	            <div class="form-group col-md-6">
+	                <label for="applied">Phone</label>
+	                <input class="form-control" id="applied" placeholder="phone" ng-model="vm.newResponse.phone">
+	            </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label for="notes">Notes</label>
+                    <input class="form-control" id="resume" placeholder="notes" ng-model="vm.newResponse.notes">
+                </div>
+            </div>
+            <div class="form-row">
+                <label>Interview Requested?</label><br>
+                <div class="form-check form-check-inline">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="radio" ng-model="vm.newResponse.interviewRequested" name="inlineRadioOptions" id="inlineRadio1" value="true"> true
+				  </label>
+				</div>
+				<div class="form-check form-check-inline">
+				  <label class="form-check-label">
+				    <input class="form-check-input" type="radio" ng-model="vm.newResponse.interviewRequested" name="inlineRadioOptions" id="inlineRadio2" value="false"> false
+				  </label>
+				</div>
+			</div>
+            <div class="form-group"></div>
+            <button type="submit" class="btn btn-primary" ng-click="vm.newResponseSubmit(vm.appToAddResponse.id, vm.newResponse)">Add
+				Response</button>
+        </form>
+    </div>
+
     <!-- **************** only show while waiting for server response *************************** -->
     <div id="loading" ng-show="vm.loading == 1">
         <p class="display-3 text-center">Collecting Applications</p>
