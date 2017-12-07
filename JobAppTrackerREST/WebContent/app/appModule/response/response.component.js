@@ -22,9 +22,11 @@ angular.module('appModule')
 //			used to apply bg-success class to any response with a job offer
 			vm.offerCheck = function(res){
 				for (var i = 0; i < vm.responses.length; i++) {
-					if(res.interviews.length > 0){
-						if(res.interviews[i].offerMade){
-							return true;
+					if(res.interviews){
+						if(res.interviews.length > 0){
+							if(res.interviews[i].offerMade){
+								return true;
+							}
 						}
 					}
 				}
