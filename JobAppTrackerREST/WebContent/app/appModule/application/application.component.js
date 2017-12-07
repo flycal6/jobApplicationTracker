@@ -1,7 +1,7 @@
 angular.module('appModule')
 	.component('application', {
 		templateUrl: 'app/appModule/application/application.component.html',
-		controller: function(appService, $scope, $location, $rootScope, responseService){
+		controller: function(appService, $scope, $location, $rootScope, responseService, interviewService){
 			var vm = this;
 			vm.loading = 1;
 			vm.applicationSelected = null;
@@ -99,6 +99,14 @@ angular.module('appModule')
 			vm.setSelected = function(app){
 				vm.applicationSelected = app;
 			};
+			
+/******************************* show interview creation form ***************************************/
+			vm.viewInterviewCreationFormn = function(res, app){
+				vm.loading = 1;
+				interviewService.storeResAndApp(res, app);
+				vm.loading = 0;
+			};
+			
 		},
 		controllerAs: 'vm'
 	});
