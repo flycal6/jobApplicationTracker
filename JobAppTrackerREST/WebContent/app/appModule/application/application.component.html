@@ -66,6 +66,17 @@
     <div ng-show="vm.loading == 0 && vm.applicationSelected && !vm.upateApplication && !vm.hideApps">
         <h2 class="display-4">{{vm.applicationSelected.companyName}} Application
         </h2>
+        <div class="row detailApp">
+	        <div class="col-12">
+	            <div class="col-6">Date Applied: {{vm.applicationSelected.date | date:'EEE MMM d, y h:mm a' : 'UTC'}}</div>
+	            <div class="col-sm-6">Company: {{vm.applicationSelected.companyName}}</div>
+	            <div class="col-sm-6">Location: {{vm.applicationSelected.jobLocation}}</div>
+	            <div class="col-sm-6">Applied Via: {{vm.applicationSelected.appliedVia}}</div>
+	            <div class="col-sm-6">Resume Version: {{vm.applicationSelected.resume}}</div>
+	            <div class="col-sm-6">Cover Letter: {{vm.applicationSelected.coverLetter}}</div>
+	        </div>
+        </div>
+        <!-- <hr> -->
         <div class="row">
 	        <div class="col-6">
 	    		    <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
@@ -73,17 +84,6 @@
 	        <div class="col-6">
 		        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected)">Add A Response</button>
 	        </div>
-        </div>
-        <!-- <hr> -->
-        <div class="row">
-        <div class="col-12 detailApp">
-            <div class="col-6">Date Applied: {{vm.applicationSelected.date | date:'EEE MMM d, y h:mm a' : 'UTC'}}</div>
-            <div class="col-sm-6">Company: {{vm.applicationSelected.companyName}}</div>
-            <div class="col-sm-6">Location: {{vm.applicationSelected.jobLocation}}</div>
-            <div class="col-sm-6">Applied Via: {{vm.applicationSelected.appliedVia}}</div>
-            <div class="col-sm-6">Resume Version: {{vm.applicationSelected.resume}}</div>
-            <div class="col-sm-6">Cover Letter: {{vm.applicationSelected.coverLetter}}</div>
-        </div>
         </div>
 
         <div class="appResonse" ng-repeat="res in vm.applicationSelected.responses">
@@ -94,6 +94,10 @@
 	            <div class="col-sm-4">Phone: {{res.phone}}</div>
 	            <div class="col-sm-4" id="interviewRequested" ng-if="res.interviewRequested">Interview Requested!!</div>
 	            <div class="col-sm-8">Notes: {{res.notes}}</div>
+	            
+	            <div class="col-12">
+		        		<button class="btn btn-outline-primary btn-block" ng-click="vm.viewInterviewCreationForm(res, vm.applicationSelected)">+ Interview</button>
+	        		</div>
             </div>
 			<div ng-if="res.interviews.length > 0">
 				<hr>
