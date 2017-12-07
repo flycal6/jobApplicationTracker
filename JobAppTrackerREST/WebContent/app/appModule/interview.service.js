@@ -1,6 +1,9 @@
 angular.module('appModule')
 	.factory('interviewService', function($http, authService, $location){
 		var service = {};
+		service.selectedRes = null;
+		service.selectedApp = null;
+		service.viewIntForm = false;
 		
 		service.index = function(){
 			var uid = authService.getToken().id;
@@ -24,6 +27,12 @@ angular.module('appModule')
 			});
 		};
 		
+		service.storeResAndApp = function(res, app){
+			service.selectedRes = res;
+			service.selectedApp = app;
+			service.viewIntForm = true;
+			$location.path('/interviews');
+		};
 		
 		return service;
 	});
