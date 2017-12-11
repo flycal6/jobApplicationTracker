@@ -47,6 +47,15 @@ angular.module('appModule')
 					vm.showCreateInterviewForm = false;
 				});
 			};
+
+			reload();
+			
+			vm.viewInterviewCreationForm = function(res, app){
+				interviewService.storeResAndApp(res, app).then(function(response){
+					console.log(response);
+				})
+			};
+
 			
 		},
 		controllerAs: 'vm'

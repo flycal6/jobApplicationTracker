@@ -51,7 +51,7 @@ public class Application {
 	private Set<Response> responses;
 
 	@JsonManagedReference(value="appToInterviews")
-	@OneToMany(mappedBy = "response", cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "application", cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	private Set<Interview> interviews;
 
 	@JsonBackReference
