@@ -21,9 +21,9 @@
       <property name="javax.persistence.jdbc.url"
         value="jdbc:mysql://localhost:3306/jobtrackerdb" />
       <property name="javax.persistence.jdbc.user"
-        value="root"/>
+        value="jobtracker"/>
       <property name="javax.persistence.jdbc.password"
-        value="280588" />
+        value="jobtracker" />
       <property name="javax.persistence.jdbc.driver"
         value="com.mysql.jdbc.Driver" />
   
