@@ -1,6 +1,7 @@
 <div class="container">
 	<h2>{{'interview component'}}</h2>
 	
+
     <!-- ********************************* view all interviews******************************************* -->
 	<div class="row-hover" ng-repeat="i in vm.interviews" ng-class="i.offerMade? 'bg-success': ''">
 	<div class="row">
@@ -18,25 +19,30 @@
   <!-- ******************* add an interview to a response/application *******************************************************  -->
     <div ng-show="vm.loading == 0 && vm.viewIntForm">
         <h3 class="display-4">Add Response to {{vm.appToAddResponse.companyName}} Application</h3>
+
         <form>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="date">Date</label>
+
                     <input type="datetime-local" class="form-control" id="date" placeholder="date" ng-model="vm.newResponse.date">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="company">Contact Name</label>
                     <input class="form-control" id="company" placeholder="contact name" ng-model="vm.newResponse.name">
+
                 </div>
             </div>
             <div class="form-row">
 	            <div class="form-group col-md-6">
 	                <label for="location">Email</label>
+
 	                <input class="form-control" id="location" placeholder="email" ng-model="vm.newResponse.email">
 	            </div>
 	            <div class="form-group col-md-6">
 	                <label for="applied">Phone</label>
 	                <input class="form-control" id="applied" placeholder="phone" ng-model="vm.newResponse.phone">
+
 	            </div>
             </div>
             <div class="form-row">
@@ -66,7 +72,7 @@
 
     <!-- **************** only show while waiting for server response *************************** -->
     <div id="loading" ng-show="vm.loading == 1">
-        <p class="display-3 text-center">Collecting Applications</p>
+        <p class="display-3 text-center">Collecting Data</p>
         <img class="img-fluid mx-auto d-block" src="./img/catLoader.gif">
     </div>
 </div>

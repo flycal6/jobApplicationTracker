@@ -78,11 +78,14 @@
         </div>
         <!-- <hr> -->
         <div class="row">
-	        <div class="col-6">
+	        <div class="col-4">
 	    		    <button class="btn btn-outline-primary btn-block" ng-click="vm.setUpateApplication(vm.applicationSelected)">Update {{vm.applicationSelected.companyName}}</button>
 	        </div>
-	        <div class="col-6">
+	        <div class="col-4">
 		        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewResponseCreationForm(vm.applicationSelected)">Add A Response</button>
+	        </div>
+	        <div class="col-4">
+		        <button class="btn btn-outline-primary btn-block" ng-click="vm.viewInterviewCreationForm(vm.applicationSelected)">Add An Interview</button>
 	        </div>
         </div>
 
@@ -113,6 +116,7 @@
 			            <div class="col-12" id="offerDiv" ng-if="i.offerMade">
 			            		<h4>Offer Details:</h4>
 			            		<div class="row">
+			            	<div class="col-sm-6">{{i.feedback}}</div>
 				            <div class="col-sm-6">{{i.offerSalary}}</div>
 				            <div class="col-sm-6">{{i.offerLocation}}</div>
 				            <div class="col-12">{{i.offerDetails}}</div>

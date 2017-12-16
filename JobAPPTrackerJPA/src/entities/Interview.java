@@ -12,10 +12,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-/*
- * Add the following fields
- * feedback
- */
+
+
 @Entity
 public class Interview {
 
@@ -30,6 +28,7 @@ public class Interview {
 	private String email;
 	private String phone;
 	private String notes;
+	private String feedback;
 	private Boolean offerMade;
 	private String offerSalary;
 	private String offerLocation;
@@ -37,12 +36,12 @@ public class Interview {
 
 	/***************** Gets and Sets *************************************/
 
-	@JsonBackReference(value="appToInterviews")
+	@JsonBackReference(value = "appToInterviews")
 	@ManyToOne
 	@JoinColumn(name = "applicationId")
 	private Application application;
 
-	@JsonBackReference(value="responseToInterviews")
+	@JsonBackReference(value = "responseToInterviews")
 	@ManyToOne
 	@JoinColumn(name = "responseId")
 	private Response response;
@@ -85,6 +84,14 @@ public class Interview {
 
 	public void setNotes(String notes) {
 		this.notes = notes;
+	}
+
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
 	}
 
 	public Boolean getOfferMade() {
@@ -144,9 +151,10 @@ public class Interview {
 		StringBuilder builder = new StringBuilder();
 		builder.append("Interview [id=").append(id).append(", date=").append(date).append(", name=").append(name)
 				.append(", email=").append(email).append(", phone=").append(phone).append(", notes=").append(notes)
-				.append(", offerMade=").append(offerMade).append(", offerSalary=").append(offerSalary)
-				.append(", offerLocation=").append(offerLocation).append(", offerDetails=").append(offerDetails)
-				.append(", application=").append(application).append(", response=").append(response).append("]");
+				.append(", feedback=").append(feedback).append(", offerMade=").append(offerMade)
+				.append(", offerSalary=").append(offerSalary).append(", offerLocation=").append(offerLocation)
+				.append(", offerDetails=").append(offerDetails).append(", application=").append(application)
+				.append(", response=").append(response).append("]");
 		return builder.toString();
 	}
 

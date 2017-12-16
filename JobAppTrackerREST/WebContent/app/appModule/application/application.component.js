@@ -55,6 +55,12 @@ angular.module('appModule')
 				vm.hideApps = true;
 			};
 			
+/******************************* show interview creation form ***************************************/
+			vm.viewInterviewCreationForm = function(aid){
+				$rootScope.$broadcast('showCreateInterviewForm', aid);
+				vm.hideApps = true;
+			};
+			
 /******************************* create new application ***************************************/
 			vm.newApp = {};
 			vm.newAppSubmit = function(newApp){
