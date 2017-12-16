@@ -33,27 +33,6 @@ public class Interview {
 	private String offerSalary;
 	private String offerLocation;
 	private String offerDetails;
-	
-	
-	
-
-	public Interview(int id, Date date, String name, String email, String phone, String notes, String feedback,
-			Boolean offerMade, String offerSalary, String offerLocation, String offerDetails) {
-		
-		this.id = id;
-		this.date = date;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.notes = notes;
-		this.feedback = feedback;
-		this.offerMade = offerMade;
-		this.offerSalary = offerSalary;
-		this.offerLocation = offerLocation;
-		this.offerDetails = offerDetails;
-		this.application = application;
-		this.response = response;
-	}
 
 	/***************** Gets and Sets *************************************/
 
